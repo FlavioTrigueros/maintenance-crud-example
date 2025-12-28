@@ -1,20 +1,45 @@
-package com.yourorg.maintenance.model;
+package com.example.maintenance.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import java.math.BigDecimal;
+import java.time.OffsetDateTime;
+import java.time.LocalDate;
 
 @Entity
+@Table(name = "maintenance")
 public class Maintenance {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "machine_id")
+    private Machine machine;
+
+    @Column(nullable = false, length = 200)
     private String title;
 
-    // getters/setters
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-    public String getTitle() { return title; }
-    public void setTitle(String title) { this.title = title; }
+    @Column(columnDefinition = "text")
+    private String description;
+
+    @Column(name = "scheduled_date", nullable = false)
+    private LocalDate scheduledDate;
+
+    @Column(name = "performed_date")
+    private OffsetDateTime performedDate;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Status status = Status.PENDING;
+
+    @Column(precision = 12, scale = 2)
+    private BigDecimal cost = BigDecimal.ZERO;
+
+    @Column(name = "created_at")
+    private OffsetDateTime createdAt = OffsetDateTime.now();
+
+    @Column(name = "updated_at")
+    private OffsetDateTime updatedAt = OffsetDateTime.now();
+
+    public enum Status { PENDING, SCHEDULED, IN_PROGRESS, DONE, CANCELLED }
 }
