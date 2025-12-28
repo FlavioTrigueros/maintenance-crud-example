@@ -1,0 +1,3 @@
+.table td.actions { white-space: nowrap; }
+button { padding:6px 8px; border:1px solid #d0d7de; background:#fff; border-radius:4px; }
+button:hover { box-shadow:0 1px 4px rgba(0,0,0,0.08); }
