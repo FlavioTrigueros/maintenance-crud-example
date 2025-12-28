@@ -1,6 +1,52 @@
 <div>
-  <h2>Maintenance items</h2>
-  <ul>
-    <li>sample-item</li>
-  </ul>
+  <div style="display:flex; justify-content:space-between; align-items:center;">
+    <div>
+      <label>Filtrar por estado:
+        <select [(ngModel)]="filterStatus" (change)="load()">
+          <option value="">Todos</option>
+          <option value="PENDING">PENDING</option>
+          <option value="SCHEDULED">SCHEDULED</option>
+          <option value="IN_PROGRESS">IN_PROGRESS</option>
+          <option value="DONE">DONE</option>
+          <option value="CANCELLED">CANCELLED</option>
+        </select>
+      </label>
+    </div>
+    <div>
+      <button (click)="load()">Refrescar</button>
+      <a routerLink="/create"><button>+ Nuevo</button></a>
+    </div>
+  </div>
+
+  <table class="table" *ngIf="!loading">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Máquina</th>
+        <th>Título</th>
+        <th>Fecha</th>
+        <th>Estado</th>
+        <th>Costo</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let m of maintenances">
+        <td>{{m.id}}</td>
+        <td>{{m.machineName || m.machineId}}</td>
+        <td>{{m.title}}</td>
+        <td>{{m.scheduledDate}}</td>
+        <td>{{m.status}}</td>
+        <td>{{m.cost | number:'1.2-2'}}</td>
+        <td class="actions">
+          <button (click)="detail(m.id)">Ver</button>
+          <button (click)="edit(m.id)">Editar</button>
+          <button (click)="remove(m.id)">Eliminar</button>
+        </td>
+      </tr>
+      <tr *ngIf="maintenances.length === 0"><td colspan="7">No hay mantenimientos</td></tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="loading">Cargando...</div>
 </div>
