@@ -1,0 +1,12 @@
+<div *ngIf="m">
+  <h2>Detalle mantenimiento #{{m.id}}</h2>
+  <p><strong>Máquina:</strong> {{m.machineName || m.machineId}}</p>
+  <p><strong>Título:</strong> {{m.title}}</p>
+  <p><strong>Descripción:</strong> {{m.description}}</p>
+  <p><strong>Programado:</strong> {{m.scheduledDate}}</p>
+  <p><strong>Estado:</strong> {{m.status}}</p>
+  <p><strong>Costo:</strong> {{m.cost | number:'1.2-2'}}</p>
+  <p><em>Created at/updated at no expuesto en DTO; se pueden añadir si quieres.</em></p>
+  <a routerLink="/"><button>Volver</button></a>
+</div>
+<div *ngIf="loading">Cargando detalle...</div>
