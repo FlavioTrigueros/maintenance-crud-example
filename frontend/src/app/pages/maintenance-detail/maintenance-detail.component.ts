@@ -5,7 +5,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-maintenance-detail',
-  templateUrl: './maintenance-detail.component.html'
+  templateUrl: './maintenance-detail.component.html',
+  styleUrls: []
 })
 export class MaintenanceDetailComponent implements OnInit {
   m?: Maintenance;

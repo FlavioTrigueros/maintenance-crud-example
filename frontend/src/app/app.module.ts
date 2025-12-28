@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 
+import { AppComponent } from './app.component';
 import { MaintenanceListComponent } from './pages/maintenance-list/maintenance-list.component';
 import { MaintenanceFormComponent } from './pages/maintenance-form/maintenance-form.component';
 import { MaintenanceDetailComponent } from './pages/maintenance-detail/maintenance-detail.component';
@@ -20,11 +19,11 @@ import { MaintenanceDetailComponent } from './pages/maintenance-detail/maintenan
   imports: [
     BrowserModule,
     HttpClientModule,
-    ReactiveFormsModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
