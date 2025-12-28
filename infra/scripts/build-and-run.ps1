@@ -1,6 +1,3 @@
-<#
-Simple Windows helper to build backend and frontend and run with docker-compose
-#>
 Set-StrictMode -Version Latest
 Push-Location -Path (Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
 cd ..
