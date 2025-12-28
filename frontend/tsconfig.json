@@ -1,6 +1,23 @@
 {
+  "compileOnSave": false,
   "compilerOptions": {
-    "target": "es2015",
-    "module": "esnext"
+    "target": "es2020",
+    "module": "es2020",
+    "lib": [
+      "es2020",
+      "dom"
+    ],
+    "declaration": false,
+    "sourceMap": true,
+    "outDir": "./out-tsc",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "skipLibCheck": true,
+    "types": [],
+    "strict": false
+  },
+  "angularCompilerOptions": {
+    "enableIvy": true
   }
 }
