@@ -1,7 +1,11 @@
-package com.yourorg.maintenance.repository;
+package com.example.maintenance.repository;
 
+import com.example.maintenance.model.Maintenance;
+import com.example.maintenance.model.Maintenance.Status;
 import org.springframework.data.jpa.repository.JpaRepository;
-import com.yourorg.maintenance.model.Maintenance;
+import java.util.List;
 
 public interface MaintenanceRepository extends JpaRepository<Maintenance, Long> {
+    List<Maintenance> findByStatus(Status status);
+    List<Maintenance> findByMachineId(Long machineId);
 }
