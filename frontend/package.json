@@ -1,0 +1,9 @@
+{
+  "name": "maintenance-frontend",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "echo 'start'",
+    "build": "echo 'build'"
+  },
+  "dependencies": {}
+}
