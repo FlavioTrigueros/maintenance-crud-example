@@ -6,8 +6,10 @@ RUN npm ci --silent
 COPY . .
 RUN npm run build -- --configuration production
 
-# Stage serve with httpd (Apache)
-FROM httpd:2.4-alpine
-COPY --from=build /app/dist/maintenance-frontend /usr/local/apache2/htdocs/
-# Optional: expose port 80 (default)
+# Stage serve with nginx
+FROM nginx:stable-alpine
+RUN rm -rf /usr/share/nginx/html/*
+COPY --from=build /app/dist/maintenance-frontend /usr/share/nginx/html
+COPY infra/nginx.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
